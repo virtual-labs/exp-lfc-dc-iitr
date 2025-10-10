@@ -1,39 +1,54 @@
-{
-  "version": 2.0,
-  "questions": [
-    {
-      "question": "This is a Sample Question 1?",
-      "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
-      },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "This is a Sample Question 2?",
-      "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
-      },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "c",
-      "difficulty": "beginner"
-    }
-  ]
-}
+[ 
+	{
+		"question": "What is the primary objective of load frequency control in a single area power system?",
+		"answers": {
+			"a": "Maintain constant voltage levels",
+			"b": "Optimize reactive power flow",
+			"c": "Control transmission line currents",
+			"d": "Regulate system frequency by balancing generation and load"
+		},
+		"correctAnswer": "d"
+	},
+	{
+		"question": "In a single area LFC, if an unexpected load increase occurs, what is the immediate effect on system frequency?",
+		"answers": {
+			"a": "The frequency increases",
+			"b": "The frequency decreases",
+			"c": "The frequency remains unchanged",
+			"d": "The frequency oscillates"
+		},
+		"correctAnswer": "b"
+	},
+	{
+		"question": "Which component of the control scheme is primarily responsible for providing a prompt response to load changes via the governor's droop characteristic?",
+		"answers": {
+			"a": "Integral controller",
+			"b": "Proportional controller",
+			"c": "Droop control mechanism",
+			"d": "Derivative controller"
+		},
+		"correctAnswer": "c"
+	},
+	{
+		"question": "In a single area system, which controller element is essential for eliminating the steady-state error in frequency regulation?",
+		"answers": {
+			"a": "Proportional gain",
+			"b": "Droop characteristic",
+			"c": "Integral action",
+			"d": "Feedforward control"
+		},
+		"correctAnswer": "c"
+	},
+	{
+		"question": "In a two-area interconnected system, what is the main purpose of the tie-line?",
+		"answers": {
+			"a": "To isolate the two areas completely",
+			"b": "To enable the exchange of power between the areas",
+			"c": "To measure the voltage differences",
+			"d": "To regulate the reactive power flow"
+		},
+		"correctAnswer": "b"
+	}
+]
+
+  
