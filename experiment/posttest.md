@@ -1,0 +1,34 @@
+### Q1. Which statement correctly describes the interaction between two areas in an interconnected LFC system?
+
+a) Each area operates completely independently without affecting the other  
+b) Tie-line power flow deviations are ignored in control decisions  
+c) Frequency regulation in one area can influence the power exchange with the other area  
+d) Only one area actively controls its frequency while the other passively follows 
+
+### Q2. In a two-area system, if Area 1 experiences an increase in load (with no immediate change in Area 2), what is the expected behavior of the tie-line power flow?
+
+a) Area 1 will export more power to Area 2  
+b) Area 1 will import more power from Area 2  
+c) The tie-line power flow remains unchanged  
+d) The tie-line power flow reverses direction abruptly  
+
+### Q3. Which component in the control system directly responds to load changes by adjusting generation?
+
+a) Transformer tap changer  
+b) Automatic voltage regulator  
+c) Circuit breaker  
+d) Governor with its droop characteristic  
+
+### Q4. What is the overall goal of two-area load frequency control?
+
+a) To maintain the nominal frequency and scheduled power exchanges between the areas  
+b) To operate both areas completely independently  
+c) To maximize the tie-line power flow at all times  
+d) To solely focus on frequency regulation without considering power exchange  
+
+### Q5. In a two-area interconnected power system, the Area Control Error (ACE) is formulated using which of the following terms?
+
+a) Tie-line power deviation only  
+b) Frequency deviation only  
+c) Both tie-line power deviation and frequency deviation  
+d) Neither tie-line power nor frequency deviation  
