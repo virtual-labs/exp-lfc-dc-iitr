@@ -1,0 +1,17 @@
+
+/home/runner/work/exp-lfc-dc-iitr/exp-lfc-dc-iitr/experiment/simulation/script.js
+    9:38  warning  'Chart' is not defined                            no-undef
+   38:43  warning  'index' is defined but never used                 no-unused-vars
+   38:50  warning  'ticks' is defined but never used                 no-unused-vars
+   46:43  warning  'index' is defined but never used                 no-unused-vars
+   46:50  warning  'ticks' is defined but never used                 no-unused-vars
+   57:14  warning  'goHome' is defined but never used                no-unused-vars
+   63:14  warning  'showSingleArea' is defined but never used        no-unused-vars
+   69:14  warning  'showTwoArea' is defined but never used           no-unused-vars
+   76:14  warning  'openInstructions' is defined but never used      no-unused-vars
+   80:14  warning  'closeInstructions' is defined but never used     no-unused-vars
+   93:14  warning  'generatePlots' is defined but never used         no-unused-vars
+  145:14  warning  'generateTwoAreaPlots' is defined but never used  no-unused-vars
+
+✖ 12 problems (0 errors, 12 warnings)
+

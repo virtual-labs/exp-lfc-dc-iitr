@@ -1,0 +1,1 @@
+#### The aim of this lab experiment is to study the load frequency control in both single-area and two-area systems.

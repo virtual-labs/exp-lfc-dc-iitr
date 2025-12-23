@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Load Frequency Control</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Initial Screen -->
+    <div class="initial-screen visible">
+      <h1>Load Frequency Control</h1>
+      <p>Simulate and analyze power system frequency control</p>
+      <div class="mode-buttons">
+        <button class="mode-btn" onclick="showSingleArea()">
+          Single Area Load Frequency Control
+        </button>
+        <button class="mode-btn" onclick="showTwoArea()">
+          Two Area Load Frequency Control
+        </button>
+      </div>
+    </div>
+
+    <!-- Single Area Container -->
+    <div class="single-area-container">
+      <div class="navbar">
+        <h1>Single Area Load Frequency Control</h1>
+        <div class="nav-buttons">
+          <button class="nav-btn" onclick="openInstructions()">Instructions</button>
+          <button class="nav-btn" onclick="goHome()">Main Menu</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column left-column">
+          <div class="section">
+            <h2>Input Parameters</h2>
+            <div class="input-container">
+              <div class="input-row">
+                <label for="Tg">Governor Time Constant (T<sub>G</sub>):</label>
+                <input type="number" id="Tg" value="0.2" step="0.01" />
+              </div>
+              <div class="input-row">
+                <label for="Tt">Turbine Time Constant (T<sub>T</sub>):</label>
+                <input type="number" id="Tt" value="0.5" step="0.01" />
+              </div>
+              <div class="input-row">
+                <label for="R">Droop Value (R):</label>
+                <input type="number" id="R" value="0.03333" step="0.00001" />
+              </div>
+              <div class="input-row">
+                <label for="D">Damping Constant (D):</label>
+                <input type="number" id="D" value="0.80" step="0.01" />
+              </div>
+              <div class="input-row">
+                <label for="M">Rotational Inertia (M):</label>
+                <input type="number" id="M" value="10" step="0.1" />
+              </div>
+              <div class="input-row">
+                <label for="delPc_var">Change in Mechanical Power (ΔP<sub>C</sub>):</label>
+                <input type="number" id="delPc_var" value="0" step="0.01" />
+              </div>
+              <div class="input-row">
+                <label for="delPl_var">Change in Load Power (ΔP<sub>L</sub>):</label>
+                <input type="number" id="delPl_var" value="1" step="0.01" />
+              </div>
+              <div class="input-row">
+                <label for="tf">Total Simulation Time:</label>
+                <input type="number" id="tf" value="20" step="1" />
+              </div>
+              <div class="input-row">
+                <label for="tc">Change of Power at Time:</label>
+                <input type="number" id="tc" value="2" step="0.1" />
+              </div>
+              <div class="input-row">
+                <label for="h">Time Step:</label>
+                <input type="number" id="h" value="0.01" step="0.0001" />
+              </div>
+              <div class="button-container">
+                <button class="plot-btn" onclick="generatePlots()">Plot</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Single Graph Below Inputs -->
+          <div class="left-graph">
+            <canvas id="delWChart"></canvas>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="image-container">
+            <img class="imageW" src="images/LFCsinglecolor.png" alt="System Diagram" />
+          </div>
+          <div class="plots-container">
+            <canvas id="delPgChart"></canvas>
+            <canvas id="delPmChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two Area Container -->
+    <div class="two-area-container">
+      <div class="navbar">
+        <h1>Two Area Load Frequency Control</h1>
+        <div class="nav-buttons">
+          <button class="nav-btn" onclick="openInstructions()">Instructions</button>
+          <button class="nav-btn" onclick="goHome()">Main Menu</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column left-column">
+          <div class="section">
+            <h2>Area 1 Parameters</h2>
+            <div class="input-container">
+              <div class="input-row">
+                <label for="Tg1">Governor Time Constant (T<sub>G1</sub>):</label>
+                <input type="number" id="Tg1" value="0.2" step="0.01" />
+              </div>
+              <div class="input-row">
+                <label for="Tt1">Turbine Time Constant (T<sub>T1</sub>):</label>
+                <input type="number" id="Tt1" value="0.5" step="0.01" />
+              </div>
+              <div class="input-row">
+                <label for="R1">Droop Value (R<sub>1</sub>):</label>
+                <input type="number" id="R1" value="0.03333" step="0.00001" />
+              </div>
+              <div class="input-row">
+                <label for="D1">Damping Constant (D<sub>1</sub>):</label>
+                <input type="number" id="D1" value="0.80" step="0.01" />
+              </div>
+              <div class="input-row">
+                <label for="M1">Rotational Inertia (M<sub>1</sub>):</label>
+                <input type="number" id="M1" value="10" step="0.1" />
+              </div>
+              <div class="input-row">
+                <label for="delPc1_var">Change in Mechanical Power (ΔP<sub>C1</sub>):</label>
+                <input type="number" id="delPc1_var" value="0" step="0.01" />
+              </div>
+              <div class="input-row">
+                <label for="delPl1_var">Change in Load Power (ΔP<sub>L1</sub>):</label>
+                <input type="number" id="delPl1_var" value="1" step="0.01" />
+              </div>
+            </div>
+
+            <h2 style="margin-top: 30px;">Area 2 Parameters</h2>
+            <div class="input-container">
+              <div class="input-row">
+                <label for="Tg2">Governor Time Constant (T<sub>G2</sub>):</label>
+                <input type="number" id="Tg2" value="0.2" step="0.01" />
+              </div>
+              <div class="input-row">
+                <label for="Tt2">Turbine Time Constant (T<sub>T2</sub>):</label>
+                <input type="number" id="Tt2" value="0.5" step="0.01" />
+              </div>
+              <div class="input-row">
+                <label for="R2">Droop Value (R<sub>2</sub>):</label>
+                <input type="number" id="R2" value="0.03333" step="0.00001" />
+              </div>
+              <div class="input-row">
+                <label for="D2">Damping Constant (D<sub>2</sub>):</label>
+                <input type="number" id="D2" value="0.80" step="0.01" />
+              </div>
+              <div class="input-row">
+                <label for="M2">Rotational Inertia (M<sub>2</sub>):</label>
+                <input type="number" id="M2" value="10" step="0.1" />
+              </div>
+              <div class="input-row">
+                <label for="delPc2_var">Change in Mechanical Power (ΔP<sub>C2</sub>):</label>
+                <input type="number" id="delPc2_var" value="0" step="0.01" />
+              </div>
+              <div class="input-row">
+                <label for="delPl2_var">Change in Load Power (ΔP<sub>L2</sub>):</label>
+                <input type="number" id="delPl2_var" value="0" step="0.01" />
+              </div>
+            </div>
+
+            <h2 style="margin-top: 30px;">Simulation Parameters</h2>
+            <div class="input-container">
+              <div class="input-row">
+                <label for="tf2">Total Simulation Time:</label>
+                <input type="number" id="tf2" value="100" step="1" />
+              </div>
+              <div class="input-row">
+                <label for="tc2">Change of Power at Time:</label>
+                <input type="number" id="tc2" value="2" step="0.1" />
+              </div>
+              <div class="input-row">
+                <label for="h2">Time Step:</label>
+                <input type="number" id="h2" value="0.01" step="0.0001" />
+              </div>
+              <div class="button-container">
+                <button class="plot-btn" onclick="generateTwoAreaPlots()">Plot</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Single Graph Below Inputs -->
+          <div class="left-graph">
+            <canvas id="delW1Chart"></canvas>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="image-container">
+            <img class="imageW" src="images/LFCtwocolor.png" alt="System Diagram" />
+          </div>
+          <div class="plots-container2">
+            <canvas id="delW2Chart"></canvas>
+            <canvas id="tieLineChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instructions Modal -->
+    <div id="instructionsModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+         
+        </div>
+        <span class="close" id="closeModal"></span>
+        <div class="modal-body">
+          <b>STEP 1</b>: Load Frequency Control is displayed with two button <b>"Single Area Load Frequency Control"</b> and <b>"Two Area Load Frequency Control"</b>. Click on <b>"Single Area Load Frequency Control"</b> button to study single area load frequency control. <br><br>
+          
+          <b>STEP 2</b>: After Click on <b>"Single Area Load Frequency Control"</b> button. In the right half screen, Single Area Load Frequency Control block diagram is displayed and in the left half screen various parameters are given such as: Governor Time Constant (T<sub>g</sub>), Turbine Time Constant (T<sub>T</sub>), Droop Value (R), Damping Constant (D), Rotational Inertia (M), Change in Mechanical Power (ΔP<sub>c</sub>), Change in Load Power (ΔP<sub>L</sub>), Total Simulation Time, Change of Power at Time, Time Step. <br><br>
+          
+          <b>STEP 3</b>: Click on <b>"Plot"</b> button. Below the Single Area Load Frequency Control block diagram the plots will be generated with the default parameter values. <br><br>
+          
+          <b>STEP 4</b>: Modify the parameters values (including inputs) and Click on <b>"Plot"</b> button again. Observe the differences in the resulting plots to see the effects of changes in parameter values. <br><br>
+          
+          <b>Note:</b> The above procedure is explained for <b>"Single Area Load Frequency Control"</b>. A similar procedure is followed for studying, the <b>"Two Area Load Frequency Control"</b>.
+        </div>
+      </div>
+    </div>
+    <footer>&copy; 2025 Virtual Labs | IIT Roorkee</footer>
+  </div>
+  
+  <script>
+    // Navigation functions
+    function goHome() {
+      document.querySelector('.single-area-container').classList.remove('visible');
+      document.querySelector('.two-area-container').classList.remove('visible');
+      document.querySelector('.initial-screen').classList.add('visible');
+    }
+
+    function showSingleArea() {
+      document.querySelector('.initial-screen').classList.remove('visible');
+      document.querySelector('.two-area-container').classList.remove('visible');
+      document.querySelector('.single-area-container').classList.add('visible');
+    }
+
+    function showTwoArea() {
+      document.querySelector('.initial-screen').classList.remove('visible');
+      document.querySelector('.single-area-container').classList.remove('visible');
+      document.querySelector('.two-area-container').classList.add('visible');
+    }
+
+    // Instructions Modal
+    function openInstructions() {
+      document.getElementById('instructionsModal').style.display = 'block';
+    }
+
+    // function closeInstructions() {
+    //   document.getElementById('instructionsModal').style.display = 'none';
+    // }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      const modal = document.getElementById('instructionsModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    // Placeholder for plot generation functions
+    function generatePlots() {
+      console.log('Generate single area plots');
+      // Your existing plot generation code goes here
+    }
+
+    function generateTwoAreaPlots() {
+      console.log('Generate two area plots');
+      // Your existing plot generation code goes here
+    }
+  </script>
+  <script src="script.js"></script>
+<script src="../assets/js/iframeResize.js"></script>
+        
+        </body>
+</html>
