@@ -1,6 +1,6 @@
 
 <div style="font-family: 'Nunito Sans', sans-serif; font-size: 20px;text-align: justify;">
-<h2>Introduction</h2>
+<h3>Introduction</h3>
 
 Active (or Real) Power Control is a critical operational strategy used to align power generation with the continuously changing load. Its primary purpose is to maintain the system frequency within a tolerable limit of ±5%. When the system load changes, the speed of all turbine-generator units is affected, leading to variations in system frequency.
 

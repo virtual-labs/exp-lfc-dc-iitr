@@ -1,6 +1,6 @@
 <div style="font-family: 'Nunito Sans', sans-serif; font-size: 20px;text-align: justify;">
 
-## Procedure for Load Frequency Control Study:
+### Procedure for Load Frequency Control Study:
 <b>STEP 1</b>: Load Frequency Control is displayed with two button "Single Area Load Frequency Control" and "Two Area Load Frequency Control". Click on "Single Area Load Frequency Control" button to study single area load frequency control.
 <br>
 <br>
